@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import Promise from 'redux-promise';
+import style from './style/style.css';
 
 const middleware = applyMiddleware(Promise);
 

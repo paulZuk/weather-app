@@ -3,6 +3,10 @@ import _ from 'lodash';
 import { connect } from 'react-redux';
 import Chart from '../components/Chart';
 
+function average(array) {
+    return _.round(_.sum(array)/array.length,0);
+}
+
 class WheaterList extends Component {
     renderWeather(cityData) {
 
@@ -11,19 +15,21 @@ class WheaterList extends Component {
         const pressure = cityData.list.map(elem => elem.main.pressure);
         const humidity = cityData.list.map(elem => elem.main.humidity);
 
-        let avgTemp = _.round(_.sum(temp)/temp.length,0);
-
-        console.log(humidity);
-
         return (
             <tr key={name}>
                 <td>{name}</td>
                 <td>
                     <Chart color="red" data={temp} />
-                    <div>{`${avgTemp} \u{2103}`}</div>
+                    <div>{`${average(temp)} \u{2103}`}</div>
                 </td>
-                <td><Chart color="blue" data={pressure} /></td>
-                <td><Chart color="green" data={humidity} /></td>
+                <td>
+                    <Chart color="blue" data={pressure} />
+                    <div>{`${average(pressure)} hPa`}</div>
+                </td>
+                <td>
+                    <Chart color="green" data={humidity} />
+                    <div>{`${average(humidity)} %`}</div>
+                </td>
             </tr>
         )
     }

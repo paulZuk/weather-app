@@ -34,7 +34,7 @@ class SerchBar extends Component {
     
     render() {
         return (
-            <form onSubmit={this.onFormSubmit} className="input-group">
+            <form onSubmit={this.onFormSubmit} className="input-group col-6">
                 <input 
                     placeholder="choose your city"
                     className="form-control"
